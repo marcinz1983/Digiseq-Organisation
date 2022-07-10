@@ -1,0 +1,9 @@
+package com.digiseq.digiseqorganisation.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/ClientOrganisation")
+public class ClientOrganisationController {
+}
