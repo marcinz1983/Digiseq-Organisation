@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Data
@@ -33,18 +35,21 @@ public class Personnel {
     @Column(name = "LAST_NAME")
     private  String lastName;
 
-    @Column(name = "USER_NAME")
+    @Column(name = "USER_NAME",unique = true)
     private  String username;
 
     @Column(name = "PASSWORD")
     @Convert(converter = AttributeEncryptor.class)
     private String password;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL",unique = true)
     private  String email;
 
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "CLIENT_ORGANISATION_ID")
+    private ClientOrganisation client_Organisation;
 
 }

@@ -1,5 +1,6 @@
 package com.digiseq.digiseqorganisation.controller;
 
+import com.digiseq.digiseqorganisation.DTO.Request.AddPersonnelRequest;
 import com.digiseq.digiseqorganisation.model.Personnel;
 import com.digiseq.digiseqorganisation.service.PersonnelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,8 @@ public class PersonnelController {
 
 
     @PostMapping("/save")
-    ResponseEntity<Void> savePersonnel(@Valid @RequestBody Personnel personnel) {
-
-        personnelService.savePersonnel(personnel);
+    ResponseEntity<Void> savePersonnel(@Valid @RequestBody AddPersonnelRequest addPersonnelRequest) {
+        personnelService.savePersonnel(addPersonnelRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
