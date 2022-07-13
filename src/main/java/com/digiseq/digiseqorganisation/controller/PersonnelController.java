@@ -32,12 +32,6 @@ public class PersonnelController {
     }
 
 
-    @PostMapping("/save")
-    ResponseEntity<Void> savePersonnel(@Valid @RequestBody AddPersonnelRequest addPersonnelRequest) {
-        personnelService.savePersonnel(addPersonnelRequest);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
     @GetMapping("/getAll")
     public ResponseEntity<List<PersonnelResponse>> findAllPersonnel() {
         List<PersonnelResponse> result = personnelService.findAllPersonnel();
@@ -48,6 +42,12 @@ public class PersonnelController {
     public ResponseEntity<List<PersonnelResponse>> findPersonnelByClientOrganisationId(@PathVariable("id") Long id) {
         List<PersonnelResponse> result = personnelService.findPersonnelByClientOrganisationId(id);
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping("/save")
+    ResponseEntity<Void> savePersonnel(@Valid @RequestBody AddPersonnelRequest addPersonnelRequest) {
+        personnelService.savePersonnel(addPersonnelRequest);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

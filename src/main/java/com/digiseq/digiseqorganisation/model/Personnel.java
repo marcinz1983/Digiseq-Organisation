@@ -6,9 +6,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,8 +50,18 @@ public class Personnel {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENT_ORGANISATION_ID")
     private ClientOrganisation client_Organisation;
 
+
+    public Personnel(String firstName, String lastName, String username, String password,
+                     String email, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 }

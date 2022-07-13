@@ -9,9 +9,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
@@ -22,6 +25,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "CLIENT_ORGANISATION")
 @Builder(setterPrefix = "with")
+//@NamedEntityGraph(name = "clientOrganisation-personnel-graph",
+//attributeNodes = @NamedAttributeNode(value = "personnel"))
 @Entity
 public class ClientOrganisation {
 

@@ -27,7 +27,7 @@ public class ClientOrganisationResponse {
 
     private Boolean enabled;
 
-    private List<Personnel> personnel;
+    private List<PersonnelResponse> personnel;
 
 
 }

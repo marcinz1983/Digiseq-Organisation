@@ -35,5 +35,5 @@ public class AddClientOrganisation {
     @NotNull
     private Boolean enabled;
 
-    private List<Personnel> personnel;
+    private List<AddPersonnelRequest> addPersonnelRequests;
 }
