@@ -1,7 +1,5 @@
 package com.digiseq.digiseqorganisation.DTO.Request;
 
-
-import com.digiseq.digiseqorganisation.model.Personnel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder(setterPrefix = "with")
-public class AddClientOrganisation {
+public class AddClientOrganisationRequest {
 
     @NotNull
     @Size(min = 1, max = 150)

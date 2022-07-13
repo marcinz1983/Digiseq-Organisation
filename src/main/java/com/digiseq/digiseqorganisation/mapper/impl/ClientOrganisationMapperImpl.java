@@ -1,13 +1,11 @@
 package com.digiseq.digiseqorganisation.mapper.impl;
 
-import com.digiseq.digiseqorganisation.DTO.Request.AddClientOrganisation;
+import com.digiseq.digiseqorganisation.DTO.Request.AddClientOrganisationRequest;
 import com.digiseq.digiseqorganisation.DTO.Response.ClientOrganisationResponse;
 import com.digiseq.digiseqorganisation.DTO.Response.PersonnelResponse;
 import com.digiseq.digiseqorganisation.mapper.ClientOrganisationMapper;
 import com.digiseq.digiseqorganisation.model.ClientOrganisation;
 import com.digiseq.digiseqorganisation.model.Personnel;
-import com.digiseq.digiseqorganisation.service.ClientOrganisationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.stream.Collectors;
 public class ClientOrganisationMapperImpl implements ClientOrganisationMapper {
 
     @Override
-    public ClientOrganisation mapRequestToEntity(AddClientOrganisation addClientOrganisation) {
+    public ClientOrganisation mapRequestToEntity(AddClientOrganisationRequest addClientOrganisation) {
 
         List<Personnel> personnelToSave = addClientOrganisation.getAddPersonnelRequests().stream().map(value -> {
             return  new Personnel( value.getFirstName(), value.getLastName(), value.getUsername(),

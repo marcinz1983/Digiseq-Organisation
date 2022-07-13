@@ -1,6 +1,7 @@
 package com.digiseq.digiseqorganisation.service.impl;
 
-import com.digiseq.digiseqorganisation.DTO.Request.AddClientOrganisation;
+import com.digiseq.digiseqorganisation.DTO.Request.AddClientOrganisationRequest;
+import com.digiseq.digiseqorganisation.DTO.Request.EditClientOrganisationrequest;
 import com.digiseq.digiseqorganisation.DTO.Response.ClientOrganisationResponse;
 import com.digiseq.digiseqorganisation.mapper.ClientOrganisationMapper;
 import com.digiseq.digiseqorganisation.model.ClientOrganisation;
@@ -26,7 +27,7 @@ public class ClientOrganisationServiceImpl implements ClientOrganisationService 
     }
 
     @Override
-    public void saveClientOrganisation(AddClientOrganisation addClientOrganisation) {
+    public void saveClientOrganisation(AddClientOrganisationRequest addClientOrganisation) {
        ClientOrganisation toSave= clientOrganisationMapper.mapRequestToEntity(addClientOrganisation);
        clientOrganisationRepository.save(toSave);
     }
@@ -48,5 +49,18 @@ public class ClientOrganisationServiceImpl implements ClientOrganisationService 
                 .orElseThrow(() -> new RuntimeException("Client organisation not find"));
         return result;
     }
+
+
+    @Override
+    public void editClientOrganisation (EditClientOrganisationrequest editRequest){
+        ClientOrganisation oldCo = clientOrganisationRepository.findByIdEquals(editRequest.getId())
+                .orElseThrow(() -> new RuntimeException("ClientOrganisation with this Id not found"));
+            if(editRequest.getExpiryDate()!=null) oldCo.setExpiryDate(editRequest.getExpiryDate());
+            if(editRequest.getRegistrationDate()!=null) oldCo.setRegistrationDate(editRequest.getRegistrationDate());
+            if(editRequest.getName()!=null) oldCo.setName(editRequest.getName());
+            if(editRequest.getEnabled()!=null) oldCo.setEnabled(editRequest.getEnabled());
+            clientOrganisationRepository.save(oldCo);
+    }
+
 
 }
