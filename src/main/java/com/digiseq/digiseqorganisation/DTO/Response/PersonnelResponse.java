@@ -24,12 +24,10 @@ public class PersonnelResponse {
 
     private String username;
 
-    private String password;
-
     private String email;
 
     private String phoneNumber;
 
-    private ClientOrganisation client_Organisation;
+    private Long clientOrganisationId;
 
 }
